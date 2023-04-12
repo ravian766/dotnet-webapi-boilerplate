@@ -5,6 +5,7 @@ public class SearchProductsRequest : PaginationFilter, IRequest<PaginationRespon
     public Guid? BrandId { get; set; }
     public decimal? MinimumRate { get; set; }
     public decimal? MaximumRate { get; set; }
+    public Guid? CategoryId { get; set; }
 }
 
 public class SearchProductsRequestHandler : IRequestHandler<SearchProductsRequest, PaginationResponse<ProductDto>>

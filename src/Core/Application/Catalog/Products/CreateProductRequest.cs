@@ -9,6 +9,7 @@ public class CreateProductRequest : IRequest<Guid>
     public decimal Rate { get; set; }
     public Guid BrandId { get; set; }
     public FileUploadRequest? Image { get; set; }
+    public Guid CategoryId { get; set; }
 }
 
 public class CreateProductRequestHandler : IRequestHandler<CreateProductRequest, Guid>
@@ -23,7 +24,7 @@ public class CreateProductRequestHandler : IRequestHandler<CreateProductRequest,
     {
         string productImagePath = await _file.UploadAsync<Product>(request.Image, FileType.Image, cancellationToken);
 
-        var product = new Product(request.Name, request.Description, request.Rate, request.BrandId, productImagePath);
+        var product = new Product(request.Name, request.Description, request.Rate, request.BrandId, productImagePath, request.CategoryId);
 
         // Add Domain Events to be raised after the commit
         product.DomainEvents.Add(EntityCreatedEvent.WithEntity(product));

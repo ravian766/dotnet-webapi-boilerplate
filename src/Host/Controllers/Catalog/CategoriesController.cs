@@ -4,13 +4,13 @@ namespace FSH.WebApi.Host.Controllers.Catalog;
 
 public class CategoriesController : VersionedApiController
 {
-    ////[HttpPost("search")]
-    ////[MustHavePermission(FSHAction.Search, FSHResource.Categories)]
-    ////[OpenApiOperation("Search brands using available filters.", "")]
-    ////public Task<PaginationResponse<CategoryDto>> SearchAsync(SearchCategoriesRequest request)
-    ////{
-    ////    return Mediator.Send(request);
-    ////}
+    [HttpPost("search")]
+    [MustHavePermission(FSHAction.Search, FSHResource.Categories)]
+    [OpenApiOperation("Search brands using available filters.", "")]
+    public Task<PaginationResponse<CategoryDto>> SearchAsync(SearchCategoriesRequest request)
+    {
+        return Mediator.Send(request);
+    }
 
     [HttpGet("{id:guid}")]
     [MustHavePermission(FSHAction.View, FSHResource.Categories)]
@@ -28,23 +28,23 @@ public class CategoriesController : VersionedApiController
         return Mediator.Send(request);
     }
 
-    ////[HttpPut("{id:guid}")]
-    ////[MustHavePermission(FSHAction.Update, FSHResource.Categories)]
-    ////[OpenApiOperation("Update a brand.", "")]
-    ////public async Task<ActionResult<Guid>> UpdateAsync(UpdateBrandRequest request, Guid id)
-    ////{
-    ////    return id != request.Id
-    ////        ? BadRequest()
-    ////        : Ok(await Mediator.Send(request));
-    ////}
+    [HttpPut("{id:guid}")]
+    [MustHavePermission(FSHAction.Update, FSHResource.Categories)]
+    [OpenApiOperation("Update a category.", "")]
+    public async Task<ActionResult<Guid>> UpdateAsync(UpdateCategoryRequest request, Guid id)
+    {
+        return id != request.Id
+            ? BadRequest()
+            : Ok(await Mediator.Send(request));
+    }
 
-    ////[HttpDelete("{id:guid}")]
-    ////[MustHavePermission(FSHAction.Delete, FSHResource.Categories)]
-    ////[OpenApiOperation("Delete a brand.", "")]
-    ////public Task<Guid> DeleteAsync(Guid id)
-    ////{
-    ////    return Mediator.Send(new DeleteBrandRequest(id));
-    ////}
+    [HttpDelete("{id:guid}")]
+    [MustHavePermission(FSHAction.Delete, FSHResource.Categories)]
+    [OpenApiOperation("Delete a category.", "")]
+    public Task<Guid> DeleteAsync(Guid id)
+    {
+        return Mediator.Send(new DeleteCategoryRequest(id));
+    }
 
     ////[HttpPost("generate-random")]
     ////[MustHavePermission(FSHAction.Generate, FSHResource.Categories)]

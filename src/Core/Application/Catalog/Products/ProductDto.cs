@@ -9,4 +9,7 @@ public class ProductDto : IDto
     public string? ImagePath { get; set; }
     public Guid BrandId { get; set; }
     public string BrandName { get; set; } = default!;
+
+    public Guid CategoryId { get; set; }
+    public string CategoryName { get; set; } = default!;
 }
