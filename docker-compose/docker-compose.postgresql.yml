@@ -46,7 +46,7 @@ services:
   #     container_name:  elasticsearch-kibana
   #     image: sebp/elk:oss-8.5.3
   #     environment:
-  #       - LOGSTASH_START=0
+  # #       - LOGSTASH_START=0 lkjflk
   #     volumes:
   #       - sebp-elk-data:/usr/share/elk/data
   #     ports:
