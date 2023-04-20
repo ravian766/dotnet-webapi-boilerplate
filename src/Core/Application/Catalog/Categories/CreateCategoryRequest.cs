@@ -19,7 +19,7 @@ public class CreateCategoryRequestValidator : CustomValidator<CreateCategoryRequ
         RuleFor(p => p.Name)
             .NotEmpty()
             .MaximumLength(75)
-            .MustAsync(async (name, ct) => await repository.GetBySpecAsync(new CategoryByNameSpec(name), ct) is null)
+            .MustAsync(async (name, ct) => await repository.FirstOrDefaultAsync(new CategoryByNameSpec(name), ct) is null)
                 .WithMessage((_, name) => T["Category {0} already Exists.", name]);
 }
 
