@@ -1,6 +1,6 @@
 {
   "LoggerSettings": {
-    "AppName": "FSH.WebApi",
+    "AppName": "HMW.WebApi",
     "ElasticSearchUrl": "http://localhost:9200",
     "WriteToFile": true,
     "StructuredConsoleLogging": false
